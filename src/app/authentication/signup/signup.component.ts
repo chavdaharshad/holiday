@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 import { AuthenticationService } from 'src/app/core';
 import { Authentication } from 'src/app/core/model/authentication.model';
-
+import * as $ from 'jquery';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -40,7 +40,7 @@ export class SignupComponent implements OnInit {
           this.router.navigate(['/login']);
         },
         (error: any) => {
-          console.log(`Signup error: ${error}`);
+          // console.log(`Signup error: ${error}`);
         }
       );
   }

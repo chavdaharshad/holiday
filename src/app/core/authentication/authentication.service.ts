@@ -24,6 +24,7 @@ export class AuthenticationService {
     const savedCredentials = this.localStorageService.getItem(credentialsKey);
     if (savedCredentials) {
       this._credentials = JSON.parse(savedCredentials);
+      console.log('  this._credentials : ',   this._credentials );
     }
   }
 
@@ -41,7 +42,7 @@ export class AuthenticationService {
   signup(
     payload: Authentication.SignupPayload
   ): Observable<Authentication.User> {
-    return this.httpClient.post('/signup', payload).pipe(
+    return this.httpClient.post('/auth/signup', payload).pipe(
       map((body: any) => {
         return body;
       })
@@ -70,7 +71,7 @@ export class AuthenticationService {
    * @return {boolean} True if the user is authenticated.
    */
   isAuthenticated(): boolean {
-    return !!this.credentials;
+    return !!this._credentials;
   }
 
   /**

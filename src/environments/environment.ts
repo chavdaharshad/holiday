@@ -6,7 +6,7 @@ export const environment = {
   env: 'DEFAULT',
   production: false,
   serverBaseUrl: 'http://localhost:1355',
-  serverUrl: 'http://localhost:1355/v1'
+  serverUrl: 'http://localhost:1400/api/v1'
 };
 
 /*

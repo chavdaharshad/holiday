@@ -1,5 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
-
+import * as $ from 'jquery'
 @Component({
   selector: 'app-not-found',
   templateUrl: './not-found.component.html',
@@ -7,8 +7,8 @@ import { Component, AfterViewInit } from '@angular/core';
 })
 export class NotFoundComponent implements AfterViewInit {
   ngAfterViewInit() {
-    // $(function() {
-    //   $('.preloader').fadeOut();
-    // });
+    $(function() {
+      $('.preloader').fadeOut();
+    });
   }
 }
