@@ -40,17 +40,16 @@ export class SignupComponent implements OnInit {
           this.router.navigate(['/login']);
         },
         (error: any) => {
-          // console.log(`Signup error: ${error}`);
+          console.log(`Signup error: ${error}`);
         }
       );
   }
 
   private createForm() {
     this.signupForm = this.formBuilder.group({
-      firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.required]],
+      name: ['', [Validators.required]],
+      personalEmail: ['', [Validators.required, Validators.email]],
+      contact: ['', [Validators.required]],
       password: ['', Validators.required],
       cPassword: ['', Validators.required]
     });

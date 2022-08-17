@@ -1,5 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
-import * as $ from 'jquery'
+import * as $ from 'jquery';
 @Component({
   selector: 'app-not-found',
   templateUrl: './not-found.component.html',

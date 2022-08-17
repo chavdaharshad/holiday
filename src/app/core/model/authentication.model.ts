@@ -5,24 +5,22 @@ export declare namespace Authentication {
   }
 
   export interface SignupPayload {
-    firstName: string;
-    lastName: string;
-    email: string;
-    phone: string;
+    name: string;
+    personalEmail: string;
+    contact: string;
     password: string;
     cPassword: string;
   }
 
   export interface User {
     _id: string;
-    firstName: string;
-    lastName: string;
+    name: string;
     emailVerified: boolean;
     emailHash: string;
     passwordLastUpdated?: any;
     lastLogin: Date;
-    phone?: any;
-    email: string;
+    contact?: any;
+    personalEmail: string;
     createdAt: Date;
     updatedAt: Date;
   }
