@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Authentication } from '../model/authentication.model';
 import { Task } from '../model/task';
 @Injectable({
@@ -8,8 +9,6 @@ import { Task } from '../model/task';
 })
 export class CrudService {
   serviceURL! : string;
-
-  private _content!: Authentication.Credentials | null;
 
 
   constructor(private httpClient:HttpClient) { 
@@ -32,7 +31,7 @@ export class CrudService {
   //   return this.httpClient.delete<Task>(this.serviceURL+'/'+task.id)
   //  }
 
-  //  editData(task : Task):Observable<Task> {
-  //   return this.httpClient.put<Task>(this.serviceURL+'/'+task.id,task)
-  //  }
+   editData(task : Task):Observable<Task> {
+    return this.httpClient.put<Task>('/holiday/{Id}',task)
+   }
 }

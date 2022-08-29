@@ -52,8 +52,9 @@ festiForm !: FormGroup;
     this.editDisplayStyle = "none";
   }
   getData() {
-    this.crudservice.getData(this.festiForm.value).subscribe(res => {
-      this.contentArr = res;
+    this.crudservice.getData(this.festiForm.value).subscribe((res:any) => {
+      console.log('res: ', res);
+      this.contentArr = res.list
     }, err => {
       alert("unble");
     });
@@ -63,9 +64,15 @@ festiForm !: FormGroup;
     this.isLoading = true;
     console.log(this.festiForm.value)
     this.crudservice.addData(this.festiForm.value).subscribe(res => {
-      
+      this.closePopup();
   }, err => {
     alert(err);
   })
+  }
+  editfestival() {
+    this.crudservice.editData(this.festiForm.value).subscribe(res => {
+      console.log(res)
+      this.closePopup();
+    })
   }
 }
