@@ -30,4 +30,5 @@ export declare namespace Authentication {
     accessToken: string;
     session: string;
   }
+  
 }
