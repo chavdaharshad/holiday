@@ -1,7 +1,6 @@
-export class Task {
-    id : number;
-    festivalName : string ;
+export interface Task {
+    festivalName : string;
     date: Date;
     description :string;
-    accessToken: string;
 }
+

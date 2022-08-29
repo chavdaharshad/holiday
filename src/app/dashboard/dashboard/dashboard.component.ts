@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup , FormControl } from '@angular/forms';
+import { finalize } from 'rxjs';
 import { CrudService } from 'src/app/core';
 import { Task } from 'src/app/core/model/task';
 
@@ -7,16 +9,26 @@ import { Task } from 'src/app/core/model/task';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
-  
-  contentObj: Task = new Task();
+ 
+festiForm !: FormGroup;
+  isLoading = false;
   contentArr: Task[] = [];
-
-  constructor(private crudservice: CrudService) { }
-
+ 
+  constructor(private crudservice: CrudService,private formBuilder: FormBuilder) {
+   }
+   private createForm() {
+    this. festiForm = new FormGroup({
+      festivalName : new FormControl(''),
+      date: new FormControl(''),
+      description : new FormControl('')
+    })
+  }
   ngOnInit(): void {
-    this.contentObj = new Task();
+    this.createForm();
     this.getData();
   }
+ 
+
   displayStyle = "none";
   addDisplayStyle = "none";
   deleteDisplayStyle = "none";
@@ -40,15 +52,20 @@ export class DashboardComponent {
     this.editDisplayStyle = "none";
   }
   getData() {
-    this.crudservice.getData(this.contentObj).subscribe(res => {
-      this.contentArr = res
+    this.crudservice.getData(this.festiForm.value).subscribe(res => {
+      this.contentArr = res;
+    }, err => {
+      alert("unble");
     });
-  }
-
-  addData() {
-    console.log("test");
-    this.crudservice.addData(this.contentObj).subscribe(res => {
-        this.ngOnInit();
-    })
+  } 
+  
+  addfestival() {
+    this.isLoading = true;
+    console.log(this.festiForm.value)
+    this.crudservice.addData(this.festiForm.value).subscribe(res => {
+      
+  }, err => {
+    alert(err);
+  })
   }
 }
