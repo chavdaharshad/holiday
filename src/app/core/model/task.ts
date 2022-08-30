@@ -3,5 +3,8 @@ export interface Task {
     festivalName : string;
     date: Date;
     description :string;
+    createdAt: Date;
+    updatedAt: Date;
+    isDeleted: false;
 }
 

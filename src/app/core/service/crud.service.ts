@@ -27,11 +27,13 @@ export class CrudService {
     return this.httpClient.get<Task[]>('/holiday')
    }
 
-  //  deleteData(task : Task):Observable<Task> {
-  //   return this.httpClient.delete<Task>(this.serviceURL+'/'+task.id)
-  //  }
+   deleteData(task : Task):Observable<Task> {
+    console.log("delete")
+    return this.httpClient.delete<Task>(`/holiday/${task._id}`)
+   }
 
    editData(task : Task):Observable<Task> {
-    return this.httpClient.put<Task>('/holiday/{Id}',task)
+    // console.log(task._id);
+    return this.httpClient.put<Task>(`/holiday/${task._id}`,task)
    }
 }

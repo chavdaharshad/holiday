@@ -86,7 +86,7 @@ export class AuthenticationService {
    * Get the auth token.
    * @return {string} The auth token is null if user is not authenticated.
    */
-  get accessToken(): string | null {
+   accessToken(): string | null {
     return this.credentials ? this.credentials.accessToken : null;
   }
 

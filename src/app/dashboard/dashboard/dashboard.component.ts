@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup , FormControl } from '@angular/forms';
-import { finalize } from 'rxjs';
 import { CrudService } from 'src/app/core';
 import { Task } from 'src/app/core/model/task';
 
@@ -10,7 +9,7 @@ import { Task } from 'src/app/core/model/task';
 })
 export class DashboardComponent {
  
-festiForm !: FormGroup;
+festiForm: FormGroup;
   isLoading = false;
   contentArr: Task[] = [];
  
@@ -70,9 +69,19 @@ festiForm !: FormGroup;
   })
   }
   editfestival() {
+    console.log(this.festiForm.value)
     this.crudservice.editData(this.festiForm.value).subscribe(res => {
-      console.log(res)
+      this.getData();
       this.closePopup();
+    })
+  }
+
+  
+  deleteData(task : Task) {
+    console.log(task)
+    this.crudservice.deleteData(task).subscribe(res => {
+      console.log(res);
+      this.getData();
     })
   }
 }
